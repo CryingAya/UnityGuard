@@ -17,14 +17,12 @@
 
 ## 下载
 
-- **最新版**：[Releases](https://github.com/CryingAya/UnityGuard/releases/latest) → 下载 `UnityGuard-0.6.0-win64.zip`（17.4 MB）
-- 国内下载慢的话，建议转存到 123 云盘 / 蓝奏云，把直链放在这里。
+- **GitHub Releases**（官方源）：[v0.6.0](https://github.com/CryingAya/UnityGuard/releases/latest) → `UnityGuard-0.6.0-win64.zip`（17.4 MB）
+- **国内网盘**（免登录、下载快）：[123 云盘](https://1830352096.share.123pan.cn/123pan/TmVijv-Fzsjh)　无提取码
 
 解压后约 40 MB，Windows 10/11 64 位，**不需要安装 Python**。
 
-发布包里有 `SHA256SUMS.txt`，可以自己核对（`Get-FileHash .\UnityGuard.exe -Algorithm SHA256`）。
-
----
+两个渠道是同一份文件。压缩包内附 `SHA256SUMS.txt`（两个 exe 的 SHA-256），解压后可自行核对。
 
 ## 用 exe（推荐，不需要装 Python）
 
