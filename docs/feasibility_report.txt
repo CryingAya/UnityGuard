@@ -1,0 +1,80 @@
+﻿# UnityGuard 可行性验证
+生成时间：2026-11-24 13:20
+命令：python tools/feasibility_check.py
+
+
+[1/6] 合成工程：改名 / 跨目录移动 / 仅改大小写
+  [PASS] 计划无校验错误
+  [PASS] 4 个操作全部进入计划
+  [PASS] 执行成功
+  [PASS] 4 个操作全部执行
+  [PASS] .meta 跟随移动：hero_basecolor_v2.png
+  [PASS] GUID 不变：hero_basecolor_v2.png
+  [PASS] .meta 跟随移动：sword_01.png
+  [PASS] GUID 不变：sword_01.png
+  [PASS] .meta 跟随移动：step_01.wav
+  [PASS] GUID 不变：step_01.wav
+  [PASS] .meta 跟随移动：bg_forest_01.png
+  [PASS] GUID 不变：bg_forest_01.png
+  [PASS] 体检结论不变（无新增断链 / 缺 meta）
+  [PASS] 重复执行是幂等的（0 个新操作）
+  [PASS] 回滚成功
+  [PASS] 整棵树字节级复原
+  [PASS] 新建目录已清理
+
+[2/6] 模拟中途崩溃：日志能否把半成品撤干净
+  [PASS] 崩溃被报告出来
+  [PASS] 完成了 2 个操作
+  [PASS] 崩溃后回滚成功
+  [PASS] 崩溃后仍然字节级复原
+
+[3/6] 真实工程（Unity 官方 2d-extras）：改一张被引用的贴图
+  [PASS] 真实工程计划有效
+  [PASS] 真实工程执行成功
+  [PASS] 真实 GUID 未变
+  [PASS] 引用方仍然指向同一个 GUID
+  [PASS] 真实工程体检结论不变（0 新增断链）
+  [PASS] 真实工程回滚成功
+  [PASS] 真实工程字节级复原
+
+[4/6] 真实工程：整体搬一个文件夹（含目录 .meta 与内部所有资源）
+  （补齐 10 个目录 .meta，模拟已导入工程的真实状态）
+  [PASS] 源目录有 .meta（已导入工程的常态）
+  [PASS] 文件夹计划有效
+  [PASS] 计划识别为目录操作
+  [PASS] 文件夹移动执行成功
+  [PASS] 原目录已消失
+  [PASS] 目录 .meta 跟随移动
+  [PASS] 目录 GUID 未变
+  [PASS] 目录内资源完整
+  [PASS] 内部资源 GUID 未变
+  [PASS] 搬完目录后仍然 0 新增断链
+  [PASS] 文件夹回滚成功
+  [PASS] 文件夹回滚字节级复原
+
+[5/6] 一键修复导入设置：体检 → 修复 → 问题消失 → 回滚复原
+  [PASS] 从体检结果生成修复计划
+  [PASS] 修复执行成功
+  [PASS] tex.srgb_on_linear 已消失
+  [PASS] tex.normal_wrong_type 已消失
+  [PASS] audio.pcm_bgm 已消失
+  [PASS] audio.decompress_bgm 已消失
+  [PASS] audio.short_streaming 已消失
+  [PASS] model.readable 已消失
+  [PASS] GUID 全部未变（只改了导入设置）
+  [PASS] 健康分上升 11 → 36
+  [PASS] 修复可以回滚
+  [PASS] 回滚后字节级复原
+
+[6/6] 名称互换：自动拆临时名 → 落回目标名，GUID 跟着文件走
+  [PASS] 互换计划有效
+  [PASS] 自动插入 1 个临时步骤
+  [PASS] 互换执行成功
+  [PASS] 内容已互换
+  [PASS] GUID 跟着文件走（a 的 guid 在 b 上）
+  [PASS] 没有残留临时文件
+  [PASS] 互换后仍然 0 新增断链
+  [PASS] 互换可回滚
+  [PASS] 互换回滚后字节级复原
+
+结论：61 / 61 项通过，执行引擎的可行性已验证

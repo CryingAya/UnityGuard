@@ -1,5 +1,11 @@
 # UnityGuard · Unity 素材体检与安全整理
 
+> **English** — Audit and safe cleanup for Unity projects: checks `.meta`/GUID integrity,
+> broken references, importer settings, duplicate assets and cross-platform path risks, then
+> applies reversible fixes (rename/move files or whole folders, rewrite importer settings,
+> quarantine unreferenced duplicates) with a rollback journal. Windows, single folder, no
+> Python required. Full README in Chinese below.
+
 两个能力，一条安全线：
 
 - **体检（audit）**：只读扫描，把「引用会断 / 包体会胖 / 光照会错」的问题找出来。**永远免费。**
@@ -11,8 +17,8 @@
 
 ## 下载
 
-- **最新版**：[Releases](https://github.com/你的用户名/UnityGuard/releases/latest) → 下载 `UnityGuard-0.6.0-win64.zip`
-- 下载慢的话：把压缩包转存到 123 云盘 / 蓝奏云，把直链贴在下面（国内建议这么做）
+- **最新版**：[Releases](https://github.com/CryingAya/UnityGuard/releases/latest) → 下载 `UnityGuard-0.6.0-win64.zip`（17.4 MB）
+- 国内下载慢的话，建议转存到 123 云盘 / 蓝奏云，把直链放在这里。
 
 解压后约 40 MB，Windows 10/11 64 位，**不需要安装 Python**。
 
@@ -32,7 +38,18 @@ UnityGuard.exe apply --plan 计划.json --yes
 UnityGuard.exe rollback "D:\MyGame" --last
 ```
 
-`dist\UnityGuard.exe` 7.3 MB 单文件，**目标机器不需要 Python**。
+发布包里是**目录版**，不是单文件：
+
+```
+UnityGuard\
+  UnityGuard.exe        图形界面（双击）
+  runtime\              运行库，别删
+  cli\UnityGuard-CLI.exe  命令行版
+  使用说明.txt  SHA256SUMS.txt
+```
+
+**目标机器不需要 Python。** 单文件版早期做过，但它每次启动要把自己解压到 `%TEMP%` 并给目录设权限，
+在受限目录里会直接报 `Could not create temporary directory`，所以换成了目录版。
 
 > 自己构建：`python tools/build_exe.py`（需要 `pip install pyinstaller`）。
 > 构建脚本末尾会自动做冒烟测试。
@@ -295,7 +312,7 @@ tests/                          # 88 个测试
 - Addressables 只把 settings/groups 当入口，不解析「地址键」字符串是否被代码引用。
 - 不解析 FBX/PSD 内部结构，只看头部与 `.meta`。
 - 命名风格与贴图用途是**启发式**，报告里一律标「疑似」。
-- 文件夹操作暂不支持「跨盘符」；名称互换（a↔b）需要拆两步执行，工具会拦下来。
+- 文件夹操作暂不支持「跨盘符」；名称互换（a↔b）会自动拆成两步执行，不需要手动干预。
 - 授权码是离线验签，**不是 DRM**；想认真防破解就得联网校验，那就违背"本地工具"的定位了。
 - `fixtures/` 下的第三方工程只用于本地验证，**不要提交进仓库**（各自许可证不同）。
 
@@ -303,13 +320,11 @@ tests/                          # 88 个测试
 
 ## 为什么不做「通用改名器」
 
-查过 Unity Asset Store：同类插件已经有人在卖，
-[Batch Renamer Pro & Organize](https://assetstore.unity.com/packages/tools/utilities/batch-renamer-pro-organize-324358) $4.99、
-[BT-Smart Rename Pro](https://assetstore.unity.com/packages/tools/utilities/bt-smart-rename-pro-advanced-project-organizer-354728) $15，
-两边收藏数都只有个位数；通用工具这边 [Eagle](https://tooltrim.com/en/tool/eagle/pricing) $34.95 买断、Advanced Renamer ~$30、PowerToys 的 PowerRename 免费。
+Asset Store 上已经有同类插件（批量改名 / 整理），桌面端也有
+[Eagle](https://tooltrim.com/en/tool/eagle/pricing)、Advanced Renamer、PowerToys 的 PowerRename 这类工具。
 
-结论：**「改名」不值钱，「改完引用不断、包体变小、出错能回滚」才值钱。**
-所以免费版负责证明这件事（体检 + 预览 + 回滚），付费版卖"一次处理完整个包"。
+它们的共同点是：**解决"改名"，不解决"改完引用还对不对"**。Unity 的引用是 GUID，存在 `.meta` 里，
+所以本项目的重点放在「改动可验证、可回滚」上，而不是再做一个更快的重命名器。
 
 ## 路线图
 
@@ -319,5 +334,5 @@ tests/                          # 88 个测试
 - [x] v0.4 导入预设一键修正（sRGB / NormalMap / Read-Write / 音频压缩）
 - [x] v0.5 名称互换 / 环 / 链自动排序（必要时插入临时名）
 - [x] v0.6 免费完整版（去掉额度限制）+ 内容去重 + 中英双语界面
-- [ ] v0.7 英文详细说明补完 + 购买页 / 授权服务器
-- [ ] v0.7 hash 去重（移到 Unity 忽略的 `_Duplicates~`）+ Unity 编辑器插件形态（`AssetDatabase.MoveAsset`）+ Addressables 地址键同步
+- [ ] v0.7 Unity 编辑器插件形态（`AssetDatabase.MoveAsset`）+ Addressables 地址键同步
+- [ ] v0.8 购买页 / 授权服务器（付费版与免费版分开仓库）

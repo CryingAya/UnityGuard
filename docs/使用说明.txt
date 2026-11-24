@@ -1,0 +1,67 @@
+﻿UnityGuard 0.6.0 — Unity 素材体检与安全整理（免费完整版）
+================================================
+
+这个文件夹就是完整程序，整个拷走即可，不需要安装 Python。
+
+    UnityGuard.exe        图形界面（双击这个）★ 推荐
+    runtime\              程序运行库（不要删）
+    cli\                  命令行版（给脚本 / CI 用）
+    使用说明.txt           本文件
+
+图形界面用法
+------------
+1. 双击 UnityGuard.exe
+2. 点「选择工程…」，选你的 Unity 工程文件夹（含 Assets 和 ProjectSettings 的那一层）
+3. 点「体检」→ 左边按严重程度列出问题，点一条右边看解释和涉及的文件
+4. 点「修复导入设置 / 按类型整理 / 去重隔离」生成计划 → 在「变更计划」页确认
+5. 点「执行计划」→ 二次确认后写盘；随时可以点「回滚」
+6. 右上角可切换 中文 / English
+
+体检是只读的，不会改任何文件；只有你点「执行计划」并确认后才会写盘。
+
+命令行用法（cli\UnityGuard-CLI.exe，参数和图形界面一一对应）
+--------------------------------------------------------------
+    cd cli
+    .\UnityGuard-CLI.exe "D:\MyGame"                       体检
+    .\UnityGuard-CLI.exe "D:\MyGame" --lang en             英文界面
+    .\UnityGuard-CLI.exe plan "D:\MyGame" --rule fix        生成修复计划
+    .\UnityGuard-CLI.exe plan "D:\MyGame" --rule category   按类型整理
+    .\UnityGuard-CLI.exe plan "D:\MyGame" --rule dedupe     去重隔离
+    .\UnityGuard-CLI.exe apply --plan "<计划文件>" --dry-run
+    .\UnityGuard-CLI.exe apply --plan "<计划文件>" --yes
+    .\UnityGuard-CLI.exe rollback "D:\MyGame" --last
+
+本版是免费完整版：所有功能都不限量，不需要授权。
+
+English
+-------
+This is the complete free edition. Double-click UnityGuard.exe for the GUI, or
+use cli\UnityGuard-CLI.exe (add --lang en). Audit, plan, apply, rollback and
+dedupe are all unlimited. Plans and journals are stored in the project's
+.unityguard\ folder, which Unity ignores.
+
+常见问题
+--------
+Q: 双击没反应 / 弹出 "Could not create temporary directory!"
+A: 那是旧版「单文件 exe」的问题（每次启动要解压到临时目录）。本文件夹里是
+   免解压的目录版，不会再出现。如果仍然报错，说明这个文件夹被放在了权限受限
+   的位置（例如某个程序的沙箱目录），把整个文件夹复制到 D:\ 或桌面再运行。
+
+Q: 提示「Unity 编辑器正打开这个工程」
+A: 体检不受影响；执行/回滚前请先关闭 Unity。编辑器开着改名，Unity 会把文件
+   当成「旧的消失 + 新的出现」，GUID 引用就断了。
+
+Q: 执行完 Unity 里没变化？
+A: 修改的是 .meta 和文件路径，需要让 Unity 重新导入：切回 Unity 窗口会自动
+   刷新；必要时右键 Assets → Reimport。
+
+关于杀毒软件误报
+----------------
+本程序用 PyInstaller 打包，少数引擎（典型是 SecureAge、Skyhigh SWG）会把这类
+"自带解释器"的可执行文件按打包行为报成可疑。VirusTotal 上 70 个引擎的检测结果是 2 个报警、
+68 个未检出，两个报警的都不是真实病毒特征。
+
+同目录的 SHA256SUMS.txt 里有本版所有文件的校验值；不放心可以只放行这一个文件，
+或者用源码（tools/build_exe.py）自行构建后比对哈希。
+
+程序不联网、不写注册表，所有改动只发生在你选择的 Unity 工程文件夹内。

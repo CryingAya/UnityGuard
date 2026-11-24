@@ -1,0 +1,105 @@
+﻿# UnityGuard 测试结果
+生成时间：2026-11-24 13:30
+命令：python -m unittest discover -s tests -v
+
+test_apply_moves_meta_and_keeps_guid (test_apply_engine.TestApply.test_apply_moves_meta_and_keeps_guid) ... ok
+test_changed_source_aborts_before_any_move (test_apply_engine.TestApply.test_changed_source_aborts_before_any_move) ... ok
+test_dry_run_touches_nothing (test_apply_engine.TestApply.test_dry_run_touches_nothing) ... ok
+test_moves_into_new_folder_and_cleans_up_on_rollback (test_apply_engine.TestApply.test_moves_into_new_folder_and_cleans_up_on_rollback) ... ok
+test_second_run_is_idempotent (test_apply_engine.TestApply.test_second_run_is_idempotent) ... ok
+test_unity_lock_blocks_apply (test_apply_engine.TestApply.test_unity_lock_blocks_apply) ... ok
+test_case_only_folder_rename (test_apply_engine.TestFolderOperations.test_case_only_folder_rename) ... ok
+test_folder_move_keeps_tree_meta_and_guid (test_apply_engine.TestFolderOperations.test_folder_move_keeps_tree_meta_and_guid) ... ok
+test_folder_rollback_after_edit_is_refused (test_apply_engine.TestFolderOperations.test_folder_rollback_after_edit_is_refused) ... ok
+test_new_parent_folders_get_meta_then_disappear_on_rollback (test_apply_engine.TestFolderOperations.test_new_parent_folders_get_meta_then_disappear_on_rollback) ... ok
+test_env_key_is_loaded (test_apply_engine.TestLicensing.test_env_key_is_loaded) ... ok
+test_free_edition_has_no_operation_limit (test_apply_engine.TestLicensing.test_free_edition_has_no_operation_limit) ... ok
+test_free_tier_can_apply_small_plan (test_apply_engine.TestLicensing.test_free_tier_can_apply_small_plan) ... ok
+test_pro_tier_allows_large_plan (test_apply_engine.TestLicensing.test_pro_tier_allows_large_plan) ... ok
+test_tampered_key_is_rejected (test_apply_engine.TestLicensing.test_tampered_key_is_rejected) ... ok
+test_category_rule_skips_resources (test_apply_engine.TestPlanValidation.test_category_rule_skips_resources) ... ok
+test_chain_executes_correctly (test_apply_engine.TestPlanValidation.test_chain_executes_correctly) ... ok
+test_chain_is_ordered_without_temp (test_apply_engine.TestPlanValidation.test_chain_is_ordered_without_temp) ... ok
+test_existing_destination_is_never_overwritten (test_apply_engine.TestPlanValidation.test_existing_destination_is_never_overwritten) ... ok
+test_folder_into_itself_rejected (test_apply_engine.TestPlanValidation.test_folder_into_itself_rejected) ... ok
+test_folder_move_plan_is_valid (test_apply_engine.TestPlanValidation.test_folder_move_plan_is_valid) ... ok
+test_invalid_characters (test_apply_engine.TestPlanValidation.test_invalid_characters) ... ok
+test_leaving_resources_is_warned (test_apply_engine.TestPlanValidation.test_leaving_resources_is_warned) ... ok
+test_missing_meta_is_a_warning_not_an_error (test_apply_engine.TestPlanValidation.test_missing_meta_is_a_warning_not_an_error) ... ok
+test_missing_source (test_apply_engine.TestPlanValidation.test_missing_source) ... ok
+test_outside_assets_is_rejected (test_apply_engine.TestPlanValidation.test_outside_assets_is_rejected) ... ok
+test_overlapping_folder_and_file_ops_rejected (test_apply_engine.TestPlanValidation.test_overlapping_folder_and_file_ops_rejected) ... ok
+test_plan_roundtrip_keeps_hash (test_apply_engine.TestPlanValidation.test_plan_roundtrip_keeps_hash) ... ok
+test_swap_is_planned_with_one_temp_hop (test_apply_engine.TestPlanValidation.test_swap_is_planned_with_one_temp_hop) ... ok
+test_crash_then_rollback (test_apply_engine.TestRollback.test_crash_then_rollback) ... ok
+test_rollback_refuses_when_target_was_edited (test_apply_engine.TestRollback.test_rollback_refuses_when_target_was_edited) ... ok
+test_rollback_restores_bytes (test_apply_engine.TestRollback.test_rollback_restores_bytes) ... ok
+test_interrupted_swap_refuses_rerun_and_rolls_back (test_apply_engine.TestSwaps.test_interrupted_swap_refuses_rerun_and_rolls_back) ... ok
+test_swap_is_idempotent (test_apply_engine.TestSwaps.test_swap_is_idempotent) ... ok
+test_swap_moves_content_and_keeps_guid (test_apply_engine.TestSwaps.test_swap_moves_content_and_keeps_guid) ... ok
+test_swap_rollback_restores (test_apply_engine.TestSwaps.test_swap_rollback_restores) ... ok
+test_three_way_cycle (test_apply_engine.TestSwaps.test_three_way_cycle) ... ok
+test_binary_project_refuses_unused_claims (test_audit.TestBinarySerialization.test_binary_project_refuses_unused_claims) ... 已生成样例工程：C:\Users\qwert\Desktop\工作项目\.tmp_tests\889fd93565\p
+条目数：117
+ok
+test_duplicate_content (test_audit.TestMediaProbes.test_duplicate_content) ... ok
+test_png_dimensions (test_audit.TestMediaProbes.test_png_dimensions) ... ok
+test_texture_purpose_guess (test_audit.TestMediaProbes.test_texture_purpose_guess) ... ok
+test_wav_duration (test_audit.TestMediaProbes.test_wav_duration) ... ok
+test_nested_importer_props (test_audit.TestMetaParsing.test_nested_importer_props) ... ok
+test_case_collision (test_audit.TestPathChecks.test_case_collision) ... ok
+test_hard_path_limit (test_audit.TestPathChecks.test_hard_path_limit) ... ok
+test_reserved_and_invalid_names (test_audit.TestPathChecks.test_reserved_and_invalid_names) ... ok
+test_trailing_dot (test_audit.TestPathChecks.test_trailing_dot) ... ok
+test_meta_in_gitignore_is_critical (test_audit.TestProjectFlags.test_meta_in_gitignore_is_critical) ... 已生成样例工程：C:\Users\qwert\Desktop\工作项目\.tmp_tests\1655033cb9\p
+条目数：117
+ok
+test_unity_lockfile_detected (test_audit.TestProjectFlags.test_unity_lockfile_detected) ... 已生成样例工程：C:\Users\qwert\Desktop\工作项目\.tmp_tests\c0d2a23741\p
+条目数：119
+ok
+test_tree_unchanged (test_audit.TestReadOnlyGuarantee.test_tree_unchanged) ... 已生成样例工程：C:\Users\qwert\Desktop\工作项目\.tmp_tests\ed7ff1f0fe\p
+条目数：117
+ok
+已生成样例工程：C:\Users\qwert\Desktop\工作项目\.tmp_tests\4829ea3cae\project
+条目数：117
+test_importer_checks (test_audit.TestSampleProject.test_importer_checks) ... ok
+test_json_roundtrip (test_audit.TestSampleProject.test_json_roundtrip) ... ok
+test_meta_and_reference_checks (test_audit.TestSampleProject.test_meta_and_reference_checks) ... ok
+test_platform_and_naming_checks (test_audit.TestSampleProject.test_platform_and_naming_checks) ... ok
+test_project_detected (test_audit.TestSampleProject.test_project_detected) ... ok
+test_referenced_assets_are_not_reported_dead (test_audit.TestSampleProject.test_referenced_assets_are_not_reported_dead) ... ok
+test_resources_asset_is_not_flagged (test_audit.TestSampleProject.test_resources_asset_is_not_flagged) ... ok
+test_score_is_bounded (test_audit.TestSampleProject.test_score_is_bounded) ... ok
+test_shader_include_is_not_flagged (test_audit.TestSampleProject.test_shader_include_is_not_flagged) ... ok
+test_shader_referenced_by_declared_name (test_audit.TestSampleProject.test_shader_referenced_by_declared_name) ... ok
+test_unity_ignored_names_do_not_require_meta (test_audit.TestSampleProject.test_unity_ignored_names_do_not_require_meta) ... ok
+test_keeps_the_referenced_copy (test_dedupe.TestGrouping.test_keeps_the_referenced_copy) ... ok
+test_resources_are_ignored (test_dedupe.TestGrouping.test_resources_are_ignored) ... ok
+test_unreferenced_group_keeps_one (test_dedupe.TestGrouping.test_unreferenced_group_keeps_one) ... ok
+test_apply_quarantines_duplicates_with_meta (test_dedupe.TestPlanAndApply.test_apply_quarantines_duplicates_with_meta) ... ok
+test_no_duplicates_means_empty_plan (test_dedupe.TestPlanAndApply.test_no_duplicates_means_empty_plan) ... ok
+test_plan_roundtrip (test_dedupe.TestPlanAndApply.test_plan_roundtrip) ... ok
+test_plan_targets_quarantine_folder (test_dedupe.TestPlanAndApply.test_plan_targets_quarantine_folder) ... ok
+test_rollback_restores_everything (test_dedupe.TestPlanAndApply.test_rollback_restores_everything) ... ok
+test_audit_issues_disappear (test_meta_fixes.TestFixEndToEnd.test_audit_issues_disappear) ... ok
+test_meta_changed_after_plan_aborts_before_writing (test_meta_fixes.TestFixEndToEnd.test_meta_changed_after_plan_aborts_before_writing) ... ok
+test_replan_after_fix_is_empty (test_meta_fixes.TestFixEndToEnd.test_replan_after_fix_is_empty) ... ok
+test_rollback_refuses_when_meta_edited_after_fix (test_meta_fixes.TestFixEndToEnd.test_rollback_refuses_when_meta_edited_after_fix) ... ok
+test_rollback_restores_bytes (test_meta_fixes.TestFixEndToEnd.test_rollback_restores_bytes) ... ok
+test_same_plan_twice_is_idempotent (test_meta_fixes.TestFixEndToEnd.test_same_plan_twice_is_idempotent) ... ok
+test_cap_texture_size_is_opt_in (test_meta_fixes.TestProposals.test_cap_texture_size_is_opt_in) ... ok
+test_correct_albedo_is_left_alone (test_meta_fixes.TestProposals.test_correct_albedo_is_left_alone) ... ok
+test_detects_all_expected_edits (test_meta_fixes.TestProposals.test_detects_all_expected_edits) ... ok
+test_plan_roundtrip_keeps_edits (test_meta_fixes.TestProposals.test_plan_roundtrip_keeps_edits) ... ok
+test_crlf_line_endings_survive (test_meta_fixes.TestTextEditing.test_crlf_line_endings_survive) ... ok
+test_edit_text_reports_conflict (test_meta_fixes.TestTextEditing.test_edit_text_reports_conflict) ... ok
+test_guid_is_preserved (test_meta_fixes.TestTextEditing.test_guid_is_preserved) ... ok
+test_missing_key_is_reported (test_meta_fixes.TestTextEditing.test_missing_key_is_reported) ... ok
+test_only_target_lines_change (test_meta_fixes.TestTextEditing.test_only_target_lines_change) ... ok
+
+----------------------------------------------------------------------
+Ran 84 tests in 2.189s
+
+OK
+
+RESULT: OK | tests: 84 | failures: 0 | errors: 0
