@@ -1,0 +1,11 @@
+﻿__pycache__/
+*.pyc
+.tmp_tests/
+.tmp_feasibility/
+.tmp_exe/
+audit_out/
+audit_real/
+audit_exe/
+fixtures/
+build/
+dist/
